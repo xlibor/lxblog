@@ -1,0 +1,7 @@
+<button class="btn swal-dialog-target {{ ip.blocked and ' btn-danger' or ' btn-default' }}"
+        data-dialog-msg="{{ ip.blocked and '取消阻塞' or '阻塞' }} IP {{ ip.id }} ?{{ ip.blocked and '' or '阻塞后此IP将不能访问你的网站' }}"
+        data-url="{{ route('ip.block', ip.id) }}"
+        data-dialog-title="{{ ip.blocked and '取消阻塞' or '阻塞' }}"
+        title="{{ ip.blocked and 'Un Block' or 'Block' }}">
+    <i class="fa {{ ip.blocked and 'fa-check' or 'fa-close' }} fa-fw"></i>
+</button>

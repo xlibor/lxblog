@@ -1,0 +1,15 @@
+{
+    "name": "lxhub/lxblog",
+    "description": "a blog project",
+    "keywords": ["lxlib", "openresty", "blog"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "discount": "",
+        "pintsized/lua-resty-http": ">=0.10",
+        "lua-cmsgpack": ""
+    },
+    "require-dev": {
+        "luafilesystem": ""
+    }
+}

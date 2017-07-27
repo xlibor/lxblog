@@ -1,0 +1,137 @@
+<div class="form-group{{ errors:has('title') and ' has-error' or '' }}">
+    <label for="title" class="control-label">文章标题*</label>
+    <input id="title" type="text" class="form-control" name="title"
+           value="{{ post and post.title or old('title') }}"
+           autofocus>
+    @if(errors:has('title'))
+        <span class="help-block">
+            <strong>{{ errors:first('title') }}</strong>
+        </span>
+    @endif
+</div>
+<div class="form-group{{ errors:has('description') and ' has-error' or '' }}">
+    <label for="description" class="control-label">文章描述*</label>
+
+    <textarea id="post-description-textarea" style="resize: vertical;" rows="3" spellcheck="false"
+              id="description" class="form-control autosize-target" placeholder="请使用 Markdown 格式书写"
+              name="description">{{ post and post.description or old('description') }}</textarea>
+
+    @if(errors:has('description'))
+        <span class="help-block">
+            <strong>{{ errors:first('description') }}</strong>
+        </span>
+    @endif
+</div>
+
+<div class="form-group{{ errors:has('slug') and ' has-error' or '' }}">
+    <label for="slug" class="control-label">文章slug*</label>
+    <input id="slug" type="text" class="form-control" name="slug"
+           value="{{ post and post.slug or old('slug') }}">
+
+    @if(errors:has('slug'))
+        <span class="help-block">
+            <strong>{{ errors:first('slug') }}</strong>
+        </span>
+    @endif
+</div>
+
+<div class="form-group{{ errors:has('category_id') and ' has-error' or '' }}">
+    <label for="categories" class="control-label">文章分类*</label>
+    <select name="category_id" class="form-control">
+        @foreach(categories as category)
+            @if((post and post.category_id or old('category_id', -1)) == category.id)
+                <option value="{{ category.id }}" selected>{{ category.name }}</option>
+            @else
+                <option value="{{ category.id }}">{{ category.name }}</option>
+            @endif
+        @endforeach
+    </select>
+
+    @if(errors:has('description'))
+        <span class="help-block">
+            <strong>{{ errors:first('description') }}</strong>
+        </span>
+    @endif
+</div>
+<div class="form-group{{ errors:has('tags[]') and ' has-error' or '' }}">
+ 
+    <label for="tags[]" class="control-label">文章标签</label>
+    <select id="post-tags" name="tags[]" class="form-control" multiple>
+        {? local postTags = post and post('tags'):col() ?}
+        @foreach(tags as tag)
+            @if(postTags and postTags:contains(tag))
+                <option value="{{ tag.name }}" selected>{{ tag.name }}</option>
+            @else
+                <option value="{{ tag.name }}">{{ tag.name }}</option>
+            @endif
+        @endforeach
+    </select>
+
+    @if(errors:has('tags[]'))
+        <span class="help-block">
+            <strong>{{ errors:first('tags[]') }}</strong>
+        </span>
+    @endif
+</div>
+<div class="form-group{{ errors:has('content') and ' has-error ' or ' ' }}">
+    <label for="post-content-textarea" class="control-label">文章内容*</label>
+    <textarea spellcheck="false" id="post-content-textarea" class="form-control" name="content"
+              rows="36"
+              placeholder="请使用 Markdown 格式书写"
+              style="resize: vertical">{{ post and post.content or old('content') }}</textarea>
+    @if(errors:has('content'))
+        <span class="help-block">
+            <strong>{{ errors:first('content') }}</strong>
+        </span>
+    @endif
+</div>
+
+<div class="form-group">
+    <label for="comment_info" class="control-label">评论信息</label>
+    <select style="margin-top: 5px" id="comment_info" name="comment_info" class="form-control">
+        {? comment_info = post and post:getConfig('comment_info', 'default') or 'default' ?}
+        <option value="default" {{ comment_info == 'default' and ' selected' or '' }}>默认</option>
+        <option value="force_disable" {{ comment_info == 'force_disable' and ' selected' or '' }}>强制关闭显示评论</option>
+        <option value="force_enable" {{ comment_info == 'force_enable' and ' selected' or '' }}>强制开启显示评论</option>
+    </select>
+</div>
+<div class="form-group">
+    <label for="comment_type" class="control-label">评论类型</label>
+    <select id="comment_type" name="comment_type" class="form-control">
+        {? comment_type = post and post:getConfig('comment_type', 'default') or 'default' ?}
+        <option value="default" {{ comment_type == 'default' and ' selected' or '' }}>默认</option>
+        <option value="raw" {{ comment_type == 'raw' and ' selected' or '' }}>自带评论</option>
+        <option value="disqus" {{ comment_type == 'disqus' and ' selected' or '' }}>Disqus</option>
+        <option value="duoshuo" {{ comment_type == 'duoshuo' and ' selected' or '' }}>多说</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="allow_resource_comment" class="control-label">是否允许评论</label>
+    <select id="allow_resource_comment" name="allow_resource_comment" class="form-control">
+        {? allow_resource_comment = post and post:getConfig('allow_resource_comment', 'default') or 'default' ?}
+        <option value="default" {{ allow_resource_comment == 'default' and ' selected' or '' }}>默认</option>
+        <option value="false" {{ allow_resource_comment == 'false' and ' selected' or '' }}>禁止评论</option>
+        <option value="true" {{ allow_resource_comment == 'true' and ' selected' or '' }}>允许评论</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <div class="radio radio-inline">
+        <label>
+            <input type="radio"
+                   {{ post and post.status == 1 and ' checked ' or '' }}
+                   name="status"
+                   value="1">发布
+        </label>
+    </div>
+    <div class="radio radio-inline">
+        <label>
+            <input type="radio"
+                   {{ not post or post.status == 0 and ' checked ' or '' }}
+                   name="status"
+                   value="0">草稿
+        </label>
+    </div>
+</div>
+{{ csrf_field() }}

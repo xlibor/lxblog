@@ -1,0 +1,29 @@
+<div class="widget widget-user" style="overflow: hidden">
+    {? local style
+    if profile_image then
+        style = "background: url(" .. profile_image .. ") center center;background-size: 100% auto;"
+    else
+        style = "background-color: #52768e;"
+    end ?}
+    <div class="widget-user-header" style="{{ style }}">
+        <h3 class="widget-user-username">{{ author or 'Author' }}</h3>
+        <h5 class="widget-user-desc">{{ description or 'Description' }}</h5>
+    </div>
+    <div class="widget-user-image">
+        <img class="img-circle" src="{{ avatar or 'https://raw.githubusercontent.com/lufficc/images/master/Xblog/logo.png' }}" alt="User Avatar">
+    </div>
+    <div class="widget-user-footer">
+        <div class="row">
+            {? count = tb.count(config('social')) ?}
+            @foreach(config('social') as key, value)
+                <div class="col-xs-{{ tonumber(12 / count) }} border-right center-block">
+                    <div class="description-block">
+                        <a href="{{ value['url'] }}" title="{{ ucfirst(key) }}" class="description-header"><i
+                                    class="{{ value['fa'] .. ' fa-lg' }}"
+                                    aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</div>

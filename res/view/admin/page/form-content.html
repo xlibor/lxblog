@@ -1,0 +1,96 @@
+<div class="form-group{{ errors:has('name') and ' has-error' or '' }}">
+    <label for="name" class="control-label">页面uri*</label>
+
+    <input id="name" type="text" class="form-control" name="name"
+           value="{{ page and page.name or old('name') }}"
+           autofocus>
+
+    @if(errors:has('name'))
+        <span class="help-block">
+            <strong>{{ errors:first('name') }}</strong>
+        </span>
+    @endif
+</div>
+
+<div class="form-group{{ errors:has('display_name') and ' has-error' or '' }}">
+    <label for="display_name" class="control-label">页面名称*</label>
+
+    <input id="display_name" type="text" class="form-control" name="display_name"
+           value="{{ page and page.display_name or old('display_name') }}">
+
+    @if(errors:has('display_name'))
+        <span class="help-block">
+            <strong>{{ errors:first('display_name') }}</strong>
+        </span>
+    @endif
+</div>
+{{ csrf_field() }}
+
+<div class="form-group{{ errors:has('content') and ' has-error' or '' }}">
+    <label for="content" class="control-label">页面内容*</label>
+
+    <textarea spellcheck="false" id="content" type="text" class="form-control" name="content"
+              rows="25"
+              style="line-height: 1.85em; resize: vertical">{{ page and page.content or old('content') }}</textarea>
+    @if(errors:has('content'))
+        <span class="help-block">
+            <strong>{{ errors:first('content') }}</strong>
+        </span>
+    @endif
+</div>
+<div class="form-group">
+    <label for="comment_info" class="control-label">评论信息</label>
+    <select style="margin-top: 5px" id="comment_info" name="comment_info" class="form-control">
+        {? local comment_info = page and page('config') and page('config').config['comment_info'] or '' ?}
+        <option value="default" {{ comment_info == 'default' and ' selected' or '' }}>默认</option>
+        <option value="force_disable" {{ comment_info == 'force_disable' and ' selected' or '' }}>强制关闭</option>
+        <option value="force_enable" {{ comment_info == 'force_enable' and ' selected' or '' }}>强制开启</option>
+    </select>
+</div>
+<div class="form-group">
+    <label for="comment_type" class="control-label">评论类型</label>
+    <select id="comment_type" name="comment_type" class="form-control">
+        {? local comment_type = page and page('config') and page('config').config['comment_type'] or '' ?}
+        <option value="default" {{ comment_type == 'default' and ' selected' or '' }}>默认</option>
+        <option value="raw" {{ comment_type == 'raw' and ' selected' or '' }}>自带评论</option>
+        <option value="disqus" {{ comment_type == 'disqus' and ' selected' or '' }}>Disqus</option>
+        <option value="duoshuo" {{ comment_type == 'duoshuo' and ' selected' or '' }}>多说</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="allow_resource_comment" class="control-label">是否允许评论</label>
+    <select id="allow_resource_comment" name="allow_resource_comment" class="form-control">
+        {? local allow_resource_comment = page and page:getConfig('allow_resource_comment', 'default') or 'default' ?}
+        <option value="default" {{ allow_resource_comment == 'default' and ' selected' or '' }}>默认</option>
+        <option value="false" {{ allow_resource_comment == 'false' and ' selected' or '' }}>禁止评论</option>
+        <option value="true" {{ allow_resource_comment == 'true' and ' selected' or '' }}>允许评论</option>
+    </select>
+</div>
+
+<div class="form-group">
+    {? local display = (page and page('config')) and page('config').config['display'] or 'false' ?}
+    <div class="radio radio-inline">
+        <label>
+            <input type="radio"
+                   {{ (page and display == 'true') and ' checked ' or '' }}
+                   name="display"
+                   value="true">显示在主页
+        </label>
+    </div>
+    <div class="radio radio-inline">
+        <label>
+            <input type="radio"
+                   {{ (not page or display == 'false') and ' checked ' or '' }}
+                   name="display"
+                   value="false">不显示在主页
+        </label>
+    </div>
+</div>
+
+<div class="form-group">
+    {? local sort_order = (page and page('config')) and page('config').config['sort_order'] or '1' ?}
+    <label for="sort_order" class="control-label">顺序</label>
+    <input id="sort_order" type="number" class="form-control" name="sort_order"
+           value="{{ sort_order }}">
+</div>
