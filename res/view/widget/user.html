@@ -10,7 +10,7 @@
         <h5 class="widget-user-desc">{{ description or 'Description' }}</h5>
     </div>
     <div class="widget-user-image">
-        <img class="img-circle" src="{{ avatar or 'https://raw.githubusercontent.com/lufficc/images/master/Xblog/logo.png' }}" alt="User Avatar">
+        <img class="img-circle" src="{{ mix(avatar or '')}}" alt="User Avatar">
     </div>
     <div class="widget-user-footer">
         <div class="row">
