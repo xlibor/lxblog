@@ -72,7 +72,8 @@ function _M:getArrayByTag(tag)
     local maps = self:getByTag(tag)
 
     local arr = {}
-    for _, map in pairs(maps) do
+
+    for _, map in ipairs(maps) do
         arr[map.key] = map.value
     end
     

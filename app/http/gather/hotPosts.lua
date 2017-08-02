@@ -16,8 +16,8 @@ function _M:gather(context, view)
         :hotPosts(XblogConfig.getValue('hot_posts_count', 5))
         :col():sortBy(function(post, key)
         
-        return -(post.view_count + post.comments_count)
-    end)
+            return -(post.view_count + post.comments_count)
+        end)
 
     context.hotPosts = hotPosts
 end

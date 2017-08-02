@@ -7,9 +7,9 @@
     "require": {
         "discount": "",
         "pintsized/lua-resty-http": ">=0.10",
-        "lua-cmsgpack": ""
+        "lua-cmsgpack": "",
+        "luafilesystem": ""
     },
     "require-dev": {
-        "luafilesystem": ""
     }
 }
