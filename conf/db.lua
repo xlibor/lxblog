@@ -11,12 +11,12 @@ local conf = {
 			user 		= env('db.user', ''),
 			database 	= env('db.database', ''),
 			password 	= env('db.password', ''),
-			port = 3306,
-			pool = 5
+			port		= 3306,
+			pool		= 5
 		},
 		sqlite = {
-			driver = 'sqlite',
-			database = lx.dir('db', 'data.db'),
+			driver 		= 'sqlite',
+			database 	= lx.dir('db', 'data.db'),
 		}
 	},
 	shift = {

@@ -65,5 +65,9 @@ function _M:afterSelect(q)
 	end
 end
 
+function _M:afterUpdate(q)
+	-- echo(q.sql)
+end
+
 return _M
 

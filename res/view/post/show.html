@@ -56,11 +56,11 @@
                                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
                         </p>
                         <p class="info">
-                            <label class="info-title">创建日期:</label>{{ post.created_at:format('Y年m月d日') }}
+                            <label class="info-title">创建日期:</label>{{ lf.dtFmt(post.created_at, '%Y年%m月%d日') }}
                         </p>
-                        @if(post.published_at and post.published_at)
+                        @if(post.updated_at)
                             <p class="info">
-                                <label class="info-title">修改日期:</label>{{ post.published_at:format('Y年m月d日') }}
+                                <label class="info-title">修改日期:</label>{{ lf.dtFmt(post.updated_at, '%Y年%m月%d日') }}
                             </p>
                         @endif
                         <p class="info">

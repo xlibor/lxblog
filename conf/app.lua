@@ -55,6 +55,7 @@ local conf = {
 		Validator	= 'validator',
 		View		= 'view',
 		Schema		= 'db.schema',
+		
 		XblogConfig = 'xblogConfig',
 		Ah 			= {'appHelper', nil, true},
 		Post		= '.app.model.post',

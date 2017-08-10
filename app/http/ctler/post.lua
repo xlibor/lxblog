@@ -28,14 +28,11 @@ end
 
 function _M:show(c, slug)
 
-    -- if t then
-    --     Log.debug('user:' .. t.name)
-    -- end
-
     local post = self.postDoer:get(slug)
 
     local recommendedPosts = self.postDoer:recommendedPosts(post)
     local comments = self.commentDoer:getByCommentable(Post.__cls, post.id)
+
     self:onPostShowing(post)
 
     c:view('post.show', Compact(
@@ -43,19 +40,6 @@ function _M:show(c, slug)
     ))
 
 end
-
-
--- @param mixed|null id
--- @param num age
--- @param num sex
-
-function _M:test111(id, age, sex)
-
-end
-
-    -- dd(Dt.now():fmt('Y-m-d H:i:s'))
-
-    -- Log.debug('url:' .. c.fullUri, c.all)
 
 return _M
 
