@@ -17,7 +17,7 @@ return {
         array = 'The :attr must have between :min and :max items.'
     },
     boolean = 'The :attr field must be true or false.',
-    confirmed = 'The :attr confirmation does not match.',
+    confirmed = ':attr 两次确认不匹配.',
     date = 'The :attr is not a valid date.',
     date_format = 'The :attr does not match the format :format.',
     different = 'The :attr and :other must be different.',
@@ -53,7 +53,7 @@ return {
     numeric = 'The :attr must be a number.',
     present = 'The :attr field must be present.',
     regex = 'The :attr format is invalid.',
-    required = 'The :attr field is required.',
+    required = '字段 :attr 必填.',
     required_if = 'The :attr field is required when :other is :value.',
     required_unless = 'The :attr field is required unless :other is in :values.',
     required_with = 'The :attr field is required when :values is present.',
