@@ -17,7 +17,7 @@ function _M:show(c, name)
 
     local user = self.userDoer:get(name)
     
-    return c:view('user.show', {user = user})
+    c:view('user.show', {user = user})
 end
 
 function _M:notifications()

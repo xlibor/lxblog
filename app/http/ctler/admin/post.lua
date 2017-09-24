@@ -18,7 +18,7 @@ end
 
 function _M:create(c)
 
-    return c:view('admin.post.create', {
+    c:view('admin.post.create', {
         categories = self.categoryDoer:getAll(),
         tags = self.tagDoer:getAll()})
 end
@@ -48,7 +48,7 @@ function _M:preview(c, slug)
     end
     local preview = true
     
-    return c:view('post.show', {post = post, preview = preview})
+    c:view('post.show', {post = post, preview = preview})
 end
 
 function _M:publish(c, id)

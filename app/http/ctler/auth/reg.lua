@@ -17,7 +17,7 @@ end
 
 function _M:showRegForm(c)
 
-    return c:view('auth.reg')
+    c:view('auth.reg')
 end
 
 function _M:reg(c)

@@ -13,7 +13,7 @@ end
 
 function _M:index(c)
 
-    return c:view('category.index')
+    c:view('category.index')
 end
 
 function _M:show(c, name)
@@ -24,7 +24,7 @@ function _M:show(c, name)
 
     local posts = self.doer:pagedPostsByCategory(category, page_size)
 
-    return c:view('category.show', {
+    c:view('category.show', {
         posts = posts, name = name
     })
 end

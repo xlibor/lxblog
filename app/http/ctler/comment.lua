@@ -15,7 +15,7 @@ end
 function _M:edit(c, id)
 
     local comment = new(Comment):find(id)
-    return c:view('comment.edit', {comment = comment})
+    c:view('comment.edit', {comment = comment})
 end
 
 function _M:update(c, id)
@@ -73,7 +73,7 @@ function _M:show(c, commentable_id)
     local comments = self.commentDoer:getByCommentable(commentable_type, commentable_id)
     local redirect = request:get('redirect')
     
-    return c:view('comment.show', {
+    c:view('comment.show', {
         comments = comments, commentable = commentable,
         redirect = redirect
     })

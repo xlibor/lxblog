@@ -13,7 +13,7 @@ end
 
 function _M:index(c)
 
-    return c:view('tag.index')
+    c:view('tag.index')
 end
 
 function _M:show(c, name)

@@ -26,7 +26,7 @@ function _M:show(c, name)
     local comments = self.commentDoer:getByCommentable(Page.__cls, page.id
     )
     
-    return c:view('page.show', {page = page, comments = comments})
+    c:view('page.show', {page = page, comments = comments})
 end
 
 function _M.__:onPageShowing(page)

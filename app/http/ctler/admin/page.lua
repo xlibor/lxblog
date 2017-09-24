@@ -14,7 +14,7 @@ end
 
 function _M:create(c)
 
-    return c:view('admin.page.create')
+    c:view('admin.page.create')
 end
 
 function _M:store(request)
@@ -51,7 +51,7 @@ function _M:edit(c, page)
 
     page = new(Page):find(page)
 
-    return c:view('admin.page.edit', {page = page})
+    c:view('admin.page.edit', {page = page})
 end
 
 function _M:update(c, page)

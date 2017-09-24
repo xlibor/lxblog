@@ -75,7 +75,7 @@ function _M:posts(c)
 
     local posts = self.postDoer:pagedPostsPure()
     
-    return c:view('admin.posts', {posts = posts})
+    c:view('admin.posts', {posts = posts})
 end
 
 function _M:comments(c)
@@ -88,21 +88,21 @@ function _M:comments(c)
         :orderBy('created_at', 'desc')
         :paging(20)
     
-    return c:view('admin.comments', {comments = comments})
+    c:view('admin.comments', {comments = comments})
 end
 
 function _M:tags(c)
 
     local tags = self.tagDoer:getAll()
     
-    return c:view('admin.tags', {tags = tags})
+    c:view('admin.tags', {tags = tags})
 end
 
 function _M:categories(c)
 
     local categories = self.categoryDoer:getAll()
     
-    return c:view('admin.categories', {categories = categories})
+    c:view('admin.categories', {categories = categories})
 end
 
 function _M:users(c)
@@ -110,14 +110,14 @@ function _M:users(c)
     local request = c.req
     local users = new(User):where(request:except('page')):paging(20)
     
-    return c:view('admin.users', {users = users})
+    c:view('admin.users', {users = users})
 end
 
 function _M:pages(c)
 
     local pages = new(Page):paging(20)
     
-    return c:view('admin.pages', {pages = pages})
+    c:view('admin.pages', {pages = pages})
 end
 
 function _M:ips(c)
@@ -133,7 +133,7 @@ function _M:ips(c)
         :orderBy('user_id', 'id')
         :paging(20)
     
-    return c:view('admin.ips', {ips = ips})
+    c:view('admin.ips', {ips = ips})
 end
 
 function _M:failedJobs()

@@ -14,7 +14,7 @@ end
 
 function _M:create(c)
 
-    return c:view('admin.category.create')
+    c:view('admin.category.create')
 end
 
 function _M:store(c)
@@ -35,7 +35,7 @@ end
 function _M:edit(c, id)
 
     local category = new(Category):find(id)
-    return c:view('admin.category.edit', {category = category})
+    c:view('admin.category.edit', {category = category})
 end
 
 function _M:update(c, id)

@@ -44,7 +44,7 @@ end
 
 function _M:projects(c)
 
-    return c:view('projects')
+    c:view('projects')
 end
 
 function _M:achieve(c)
@@ -52,7 +52,7 @@ function _M:achieve(c)
     local posts = self.postDoer:achieve()
     local posts_count = self.postDoer:postCount()
     
-    return c:view('achieve', {posts = posts, posts_count = posts_count})
+    c:view('achieve', {posts = posts, posts_count = posts_count})
 end
 
 return _M

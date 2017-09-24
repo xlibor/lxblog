@@ -16,7 +16,7 @@ function _M:images(c)
     local images = self.imageDoer:getAll()
     local image_count = self.imageDoer:count()
     
-    return c:view('admin.images', {
+    c:view('admin.images', {
         images = images,
         image_count = image_count
     })

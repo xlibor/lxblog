@@ -18,7 +18,7 @@ function _M:index(c)
     local page_size = XblogConfig.getValue('page_size', 7)
     local posts = self.postDoer:pagedPosts(page_size)
  
-    return c:view('post.index', {posts = posts})
+    c:view('post.index', {posts = posts})
 end
 
 -- show post by slug
