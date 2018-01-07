@@ -1,7 +1,7 @@
 
 local lx, _M, mt = oo{
     _cls_ = '',
-    _ext_ = 'auth.user',
+    _ext_ = 'lxlib.auth.user',
     -- _mix_ = 'notifiable'
 }
 
@@ -29,7 +29,7 @@ end
 
 function _M:posts()
 
-    return self:hasMany(Post)
+    return self:hasMany('.app.model.post')
 end
 
 return _M

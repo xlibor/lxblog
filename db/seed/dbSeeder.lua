@@ -38,7 +38,7 @@ function _M:run()
 	                tb.push(ids, tag_ids[rand(1, 9)].id)
 	            end
 	            p:tags():sync(ids)
-        end)
+            end)
     end)
 end
 

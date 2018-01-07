@@ -6,6 +6,9 @@ return function(cmd)
         echo('hello')
         local user = User.find(1)
         echo(user)
+
+        local app = lx.kit()
     end)
+
 	cmd:add('cvtMd', 'convertMd@run')
 end

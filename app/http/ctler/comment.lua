@@ -7,6 +7,8 @@ local lx, _M = oo{
 local app, lf, tb, str, new = lx.kit()
 local redirect, back, abort = lx.h.kit()
 
+local Comment = lx.use('.app.model.comment')
+
 function _M:ctor()
 
     self.commentDoer = new 'commentDoer'
@@ -14,13 +16,13 @@ end
 
 function _M:edit(c, id)
 
-    local comment = new(Comment):find(id)
+    local comment = Comment.find(id)
     c:view('comment.edit', {comment = comment})
 end
 
 function _M:update(c, id)
 
-    local comment = new(Comment):find(id)
+    local comment = Comment.find(id)
     local request = c.req
     local rdTo
     -- self:checkPolicy('manager', comment)

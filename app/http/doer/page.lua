@@ -7,6 +7,8 @@ local lx, _M = oo{
 local app, lf, tb, str, new = lx.kit()
 local abort = lx.h.abort
 
+local Page = lx.use('.app.model.page')
+
 function _M:ctor()
 
     self._tag = 'page'
@@ -64,7 +66,7 @@ end
 
 function _M:update(request, pageId)
 
-    page = new(Page):find(pageId)
+    page = Page.find(pageId)
     self:clearCache()
     page:saveConfig(request.all)
     

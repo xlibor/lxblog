@@ -15,7 +15,7 @@ end
 
 function _M:posts()
 
-    return self:hasMany(Post)
+    return self:hasMany('.app.model.post')
 end
 
 return _M

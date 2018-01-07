@@ -29,7 +29,7 @@ local conf = {
 		'.app.box.routeBox',
 		'.app.box.appBox',
 		'.app.box.dbBox',
-		'.app.box.gatherBox',
+		'.app.box.gatherBox'
 	},
 
 	faces = {

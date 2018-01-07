@@ -6,6 +6,7 @@ local lx, _M = oo{
 }
 
 local app, lf, tb, str, new = lx.kit()
+local Post = lx.use('.app.model.post')
 
 function _M:ctor()
 
@@ -14,6 +15,8 @@ function _M:ctor()
 end
 
 function _M:index(c)
+
+    -- echo( Post.findOrFail(11) )
 
     local page_size = XblogConfig.getValue('page_size', 7)
     local posts = self.postDoer:pagedPosts(page_size)

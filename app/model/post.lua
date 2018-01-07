@@ -36,27 +36,27 @@ end
 
 function _M:category()
 
-    return self:belongsTo(Category)
+    return self:belongsTo('.app.model.category')
 end
 
 function _M:tags()
 
-    return self:belongsToMany(Tag)
+    return self:belongsToMany('.app.model.tag')
 end
 
 function _M:user()
 
-    return self:belongsTo(User)
+    return self:belongsTo('.app.model.user')
 end
 
 function _M:comments()
 
-    return self:morphMany(Comment, 'commentable')
+    return self:morphMany('.app.model.comment', 'commentable')
 end
 
 function _M:config()
 
-    return self:morphOne(Config, 'configable')
+    return self:morphOne('.app.model.config', 'configable')
 end
 
 function _M:isPublished()

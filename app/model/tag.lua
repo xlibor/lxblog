@@ -15,7 +15,7 @@ end
 
 function _M:posts()
 
-    return self:belongsToMany(Post)
+    return self:belongsToMany('.app.model.post')
 end
 
 return _M

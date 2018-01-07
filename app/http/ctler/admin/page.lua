@@ -7,6 +7,8 @@ local lx, _M, mt = oo{
 local app, lf, tb, str, new = lx.kit()
 local redirect, back = lx.h.redirect, lx.h.back
 
+local Page = lx.use('.app.model.page')
+
 function _M:ctor()
 
     self.pageDoer = new 'pageDoer'
@@ -49,7 +51,7 @@ end
 
 function _M:edit(c, page)
 
-    page = new(Page):find(page)
+    page = Page.find(page)
 
     c:view('admin.page.edit', {page = page})
 end

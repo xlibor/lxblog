@@ -8,6 +8,9 @@ local lx, _M = oo{
 local app, lf, tb, str, new = lx.kit()
 local route = lx.h.route
 
+local Post = lx.use('.app.model.post')
+local Page = lx.use('.app.model.page')
+
 function _M:ctor()
 
     self.table = 'comments'
@@ -19,12 +22,12 @@ end
 
 function _M:user()
 
-    return self:belongsTo(User)
+    return self:belongsTo('.app.model.user')
 end
 
 function _M:ip()
 
-    return self:belongsTo(Ip)
+    return self:belongsTo('.app.model.ip')
 end
 
 function _M:commentable()
@@ -38,8 +41,7 @@ function _M:getCommentableData()
         self.commentableData['deleted'] = false
         local st = self.commentable_type
         if st == Post.__cls then
-            post = new(Post)
-                :where('id', self.commentable_id)
+            post = Post.where('id', self.commentable_id)
                 :select('title', 'slug'):first()
             self.commentableData['type'] = '文章'
             if not post then

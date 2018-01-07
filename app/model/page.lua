@@ -18,12 +18,12 @@ end
 
 function _M:comments()
 
-    return self:morphMany(Comment, 'commentable')
+    return self:morphMany('.app.model.comment', 'commentable')
 end
 
 function _M:config()
 
-    return self:morphOne(Config, 'configable')
+    return self:morphOne('.app.model.config', 'configable')
 end
 
 function _M:getConfigKeys()

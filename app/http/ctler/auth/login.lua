@@ -2,7 +2,7 @@
 local lx, _M, mt = oo{
     _cls_ = '',
     _ext_ = 'controller',
-    _mix_ = 'auth.authenticateUser'
+    _mix_ = 'lxlib.auth.authenticateUser'
 }
 
 local app, lf, tb, str = lx.kit()

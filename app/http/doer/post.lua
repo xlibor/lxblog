@@ -9,6 +9,7 @@ local lx, _M = oo{
 }
 
 local app, lf, tb, str, new = lx.kit()
+local Post = lx.use('.app.model.post')
 
 local request, abort = lx.h.request, lx.h.abort
 local auth = lx.h.auth

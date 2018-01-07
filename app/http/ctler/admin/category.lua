@@ -7,6 +7,8 @@ local lx, _M, mt = oo{
 local app, lf, tb, str, new = lx.kit()
 local redirect, back = lx.h.kit()
 
+local Category = lx.use('.app.model.category')
+
 function _M:ctor()
 
     self.categoryDoer = new 'categoryDoer'
@@ -34,13 +36,13 @@ end
 
 function _M:edit(c, id)
 
-    local category = new(Category):find(id)
+    local category = Category.find(id)
     c:view('admin.category.edit', {category = category})
 end
 
 function _M:update(c, id)
 
-    local category = new(Category):find(id)
+    local category = Category.find(id)
     local request = c.req
     self:validate(request, {
         name = 'required|unique:categories'
@@ -57,7 +59,7 @@ end
 
 function _M:destroy(c, id)
 
-    local category = new(Category):find(id)
+    local category = Category.find(id)
     if category:posts():pure():count() > 0 then
         
         return redirect():route('admin.categories')

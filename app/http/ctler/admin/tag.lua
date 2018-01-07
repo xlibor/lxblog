@@ -7,6 +7,8 @@ local lx, _M, mt = oo{
 local app, lf, tb, str, new = lx.kit()
 local redirect, back = lx.h.kit()
 
+local Tag = lx.use('.app.model.tag')
+
 function _M:ctor()
 
     self.tagDoer = new 'tagDoer'
@@ -30,7 +32,7 @@ end
 
 function _M:destroy(c, id)
 
-    local tag = new(Tag):find(id)
+    local tag = Tag.find(id)
 
     if tag:posts():pure():count() > 0 then
         

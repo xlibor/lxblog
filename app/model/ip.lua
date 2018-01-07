@@ -17,12 +17,12 @@ end
 
 function _M:comments()
 
-    return self:hasMany(Comment)
+    return self:hasMany('.app.model.comment')
 end
 
 function _M:user()
 
-    return self:belongsTo(User)
+    return self:belongsTo('.app.model.user')
 end
 
 return _M
