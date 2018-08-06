@@ -11,4 +11,5 @@ return function(cmd)
     end)
 
 	cmd:add('cvtMd', 'convertMd@run')
+    cmd:add('exportDocs', 'exportDocs')
 end

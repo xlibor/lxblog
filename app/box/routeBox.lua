@@ -20,15 +20,15 @@ function _M:map()
  	local route = self.router
  	local namespace = app:conf('app.namespace')
  	
- 	route:prefix('/'):bar('web')
+ 	route:prefix('/lxblog/'):bar('web')
  		:namespace(namespace)
  		:group(require('.map.web'))
 
- 	route:prefix('api'):bar('api')
+ 	route:prefix('/lxblog/api'):bar('api')
  		:namespace(namespace)
  		:group(require('.map.api'))
 
- 	route:prefix('admin'):bar({'web', 'auth', 'admin'})
+ 	route:prefix('/lxblog/admin'):bar({'web', 'auth', 'admin'})
  		:namespace(namespace .. '.admin')
  		:group(require('.map.admin'))
 

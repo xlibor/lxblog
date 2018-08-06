@@ -12,6 +12,16 @@ local conf = {
 			database 	= env('db.database', ''),
 			password 	= env('db.password', ''),
 			port		= 3306,
+			poolSize    = 10,
+			charset		= 'utf8'
+		},
+		orhub = {
+			driver 		= 'mysql',
+			host 		= env('db.host', ''),
+			user 		= env('db.user', ''),
+			database 	= 'orhub',
+			password 	= env('db.password', ''),
+			port		= 3306,
 			pool		= 5,
 			charset		= 'utf8'
 		},
